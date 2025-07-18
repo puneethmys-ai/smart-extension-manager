@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Extension Manager Settings</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h3>Set Site-Specific Rules</h3>
+  <form id="ruleForm">
+    <label>Site (example.com):</label>
+    <input type="text" id="site" required />
+    <label>Extension:</label>
+    <select id="extList"></select>
+    <label>Enable on site?</label>
+    <input type="checkbox" id="enable" />
+    <button type="submit">Add Rule</button>
+  </form>
+  <h4>Current Rules</h4>
+  <ul id="rules"></ul>
+  <script src="options.js"></script>
+</body>
+</html>
