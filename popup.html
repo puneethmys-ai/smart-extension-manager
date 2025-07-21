@@ -3,11 +3,88 @@
 <head>
   <title>Smart Extension Manager</title>
   <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <h3>Extensions</h3>
-  <ul id="extList"></ul>
-  <a href="options.html" target="_blank">Set Rules</a>
+  <div class="container">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="extensions-tab">Extensions</button>
+      <button class="tab-btn" data-tab="rules-tab">Rules</button>
+    </div>
+
+    <div id="extensions-tab" class="tab-content active">
+      <header>
+        <h3>Extensions Manager</h3>
+        <div class="controls">
+          <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search extensions...">
+          </div>
+          <div class="filters">
+            <select id="filterSelect">
+              <option value="all">All</option>
+              <option value="enabled">Enabled</option>
+              <option value="disabled">Disabled</option>
+            </select>
+            <select id="sortSelect">
+              <option value="name">Sort by Name</option>
+              <option value="enabled">Sort by Status</option>
+              <option value="recent">Sort by Recent</option>
+            </select>
+          </div>
+        </div>
+      </header>
+
+      <div id="error-message" class="error-message"></div>
+      
+      <main>
+        <ul id="extList" class="extensions-list"></ul>
+      </main>
+    </div>
+
+    <div id="rules-tab" class="tab-content">
+      <header>
+        <h3>Extension Rules</h3>
+        <p class="subtitle">Configure when extensions should be enabled or disabled based on the sites you visit.</p>
+      </header>
+
+      <section class="form-section">
+        <form id="ruleForm">
+          <div class="form-group">
+            <label for="site">
+              Site URL Pattern
+              <span class="help-text">Example: *.example.com, https://site.com/*</span>
+            </label>
+            <input type="text" id="site" placeholder="Enter URL pattern" required />
+          </div>
+
+          <div class="form-group">
+            <div class="search-box">
+              <input type="text" id="searchExtensions" placeholder="Search extensions..." />
+            </div>
+          </div>
+
+          <div id="extensionsForRule" class="extensions-for-rule"></div>
+
+          <button type="submit" class="primary-button">ADD RULE</button>
+        </form>
+      </section>
+
+      <section class="rules-section">
+        <div class="rules-header">
+          <h4>Current Rules</h4>
+          <div class="search-box">
+            <input type="text" id="searchRules" placeholder="Search rules..." />
+          </div>
+        </div>
+
+        <div id="rules-error-message" class="error-message"></div>
+        <div id="success-message" class="success-message"></div>
+
+        <div id="rules" class="rules-list"></div>
+      </section>
+    </div>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>
